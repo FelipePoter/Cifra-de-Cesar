@@ -2,24 +2,29 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #2c3e50, #4ca1af);
     color: whitesmoke;
+    padding: 20px;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
-    background-color: #ffffff;
+    backdrop-filter: blur(5.5px);
+    -webkit-backdrop-filter: blur(5.5px);
+    background: rgba(255, 255, 255, 0.75);
     padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     width: 100%;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.30);
 }
 
 .title {
@@ -71,9 +76,37 @@ button:hover {
     transition: background-color 0.3s ease;
 }
 
+/* Botão com animação ao clicar */
+button:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Lista de resultados */
+ul.decrypt-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+ul.decrypt-list li {
+    margin: 0.5rem 0;
+    color: #2c3e50;
+    background-color: #c5c5c5;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
 .result {
     font-size: 1rem;
     color: #2c3e50;
     text-align: center;
     word-wrap: break-word;
 }
+
+button.clicked {
+    transform: scale(0.95);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
