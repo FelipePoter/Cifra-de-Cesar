@@ -21,7 +21,8 @@ function caesar_cipher_encrypt() {
 function caesar_cipher_decrypt() {
     let message = document.querySelector(".decrypt").value.toLowerCase();
     let keyInput = document.querySelector(".key-decrypt").value;
-    let result = "";
+    const list = document.querySelector(".decrypt-list");
+    list.innerHTML = ""; // Limpa a lista anterior
 
     if (keyInput) {
         // Caso uma chave seja fornecida
@@ -37,11 +38,11 @@ function caesar_cipher_decrypt() {
             }
         }
 
-        result = `Texto descriptografado: ${decrypted}`;
+        const listItem = document.createElement("li");
+        listItem.textContent = `Texto descriptografado: ${decrypted}`;
+        list.appendChild(listItem);
     } else {
         // Caso nenhuma chave seja fornecida, exibe todas as variações
-        result = "Variações possíveis:\n";
-
         for (let shift = 1; shift <= 25; shift++) {
             let variation = "";
 
@@ -54,9 +55,20 @@ function caesar_cipher_decrypt() {
                 }
             }
 
-            result += `Chave ${shift}: ${variation}\n`;
+            const listItem = document.createElement("li");
+            listItem.textContent = `Chave ${shift}: ${variation}`;
+            list.appendChild(listItem);
         }
     }
-
-    document.querySelector(".result").textContent = result;
 }
+
+function animateButton(button) {
+    button.classList.add("clicked");
+    setTimeout(() => {
+        button.classList.remove("clicked");
+    }, 150);
+}
+
+document.querySelectorAll("button").forEach(button => {
+    button.addEventListener("click", () => animateButton(button));
+});
